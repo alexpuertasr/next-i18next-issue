@@ -3,7 +3,7 @@ import Link from "next/link";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
-function Home() {
+function Second() {
   const { t } = useTranslation();
 
   return (
@@ -15,8 +15,24 @@ function Home() {
 
       <main>
         <h1>
-          <Link passHref href="/second">
-            <a>{t("second")}</a>
+          <Link passHref href="/">
+            <a>{t("home")}</a>
+          </Link>
+        </h1>
+        <h1>
+          <Link
+            passHref
+            href={{ pathname: "/second", query: { query: "test" } }}
+          >
+            <a>{t("add-query")}</a>
+          </Link>
+        </h1>
+        <h1>
+          <Link
+            passHref
+            href={{ pathname: "/second", query: { query: "test-2" } }}
+          >
+            <a>{t("change-query")}</a>
           </Link>
         </h1>
       </main>
@@ -32,4 +48,4 @@ export async function getStaticProps({ locale }) {
   };
 }
 
-export default Home;
+export default Second;
